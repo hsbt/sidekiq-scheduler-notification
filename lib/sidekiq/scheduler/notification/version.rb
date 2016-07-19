@@ -1,5 +1,5 @@
 module Sidekiq
-  module Scheduler
+  class Scheduler
     module Notification
       VERSION = "0.1.0"
     end

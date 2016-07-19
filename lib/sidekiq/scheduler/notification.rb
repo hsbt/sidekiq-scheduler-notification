@@ -1,9 +1,15 @@
-require "sidekiq/scheduler/notification/version"
+require 'active_support/core_ext/module'
+require 'sidekiq-scheduler'
+require 'sidekiq/middleware/server/slack_notification'
 
 module Sidekiq
-  module Scheduler
-    module Notification
-      # Your code goes here...
+  class Scheduler
+    cattr_accessor :notify_classes do
+      if Sidekiq.schedule
+        Sidekiq.schedule.select{|_,v| v["notification"] }.map{|k,_| k}
+      end
     end
+
+    cattr_accessor :notify_webhook
   end
 end
