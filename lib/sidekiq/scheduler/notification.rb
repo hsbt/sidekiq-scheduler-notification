@@ -1,11 +1,12 @@
-require 'active_support/core_ext/module'
 require 'sidekiq-scheduler'
 require 'sidekiq/middleware/server/slack_notification'
 require 'sidekiq/scheduler/notification/version'
 
 module Sidekiq
   class Scheduler
-    cattr_accessor :notify_classes, :notify_webhook
+    class << self
+      attr_accessor :notify_classes, :notify_webhook
+    end
   end
 end
 
