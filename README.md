@@ -26,7 +26,7 @@ Added following configuration to initializer like `config/initializer/sidekiq.rb
 Sidekiq::Scheduler.notify_webhook = "https://hooks.slack.com/services/xxx/yyyzzz"
 ```
 
-and append `notification` variable like this
+and append `notification` variable into `schedule.yml` used by sidekiq-scheduler. like this
 
 ```yaml
 NotificationJob:
@@ -34,7 +34,13 @@ NotificationJob:
   notification: true
 ```
 
-You can get notification from sidekiq to slack channnel.
+Finally, You need to load `schedule.yml` at first before loading to this gem. You can add to read schedule.yml to sidekiq startup hook.
+
+```rb
+Sidekiq.options[:lifecycle_events][:startup].unshift -> {
+  Sidekiq.schedule = YAML.load_file(File.expand_path("../../../config/scheduler.yml",__FILE__))
+}
+```
 
 ## Development
 
