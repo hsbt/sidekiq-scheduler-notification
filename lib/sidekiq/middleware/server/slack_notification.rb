@@ -5,8 +5,8 @@ module Sidekiq
     module Server
       class SlackNotification
         def call(_worker, job, _queue)
-          if job['wrapped'].in? ::Sidekiq::Scheduler.notify_classes
-            notifier ||= Slack::Notifier.new(::Sidekiq::Scheduler.notify_webhook)
+          if Sidekiq::Scheduler.notify_classes.include? job['wrapped']
+            notifier ||= Slack::Notifier.new(Sidekiq::Scheduler.notify_webhook)
             notifier.username = 'Sidekiq Notification'
             begin
               notifier.ping "Start : #{job['wrapped']}"
