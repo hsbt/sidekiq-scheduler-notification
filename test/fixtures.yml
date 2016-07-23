@@ -1,0 +1,6 @@
+NotificationJob:
+  cron: '15 0 1 1 1'
+  notification: true
+
+BasicJob:
+  cron: '15 0 1 1 1'
