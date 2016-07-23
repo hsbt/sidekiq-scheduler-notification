@@ -14,7 +14,7 @@ module SidekiqSchedulerNotification
   module ClassMethods
     def load_schedule!
       super
-      if enabled && Sidekiq.schedule
+      if Sidekiq.schedule
         Sidekiq::Scheduler.notify_classes = Sidekiq.schedule.select{|_,v| v["notification"] }.map{|k,_| k}
       end
     end
