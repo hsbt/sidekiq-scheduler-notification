@@ -1,8 +1,6 @@
 # Sidekiq::Scheduler::Notification
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sidekiq/scheduler/notification`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Simple notification middleware with slack when invoke/error/finish to sidekiq jobs.
 
 ## Installation
 
@@ -22,7 +20,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Added following configuration to initializer like `config/initializer/sidekiq.rb`
+
+```rb
+Sidekiq::Scheduler.notify_webhook = "https://hooks.slack.com/services/xxx/yyyzzz"
+```
+
+and append `notification` variable like this
+
+```yaml
+NotificationJob:
+  cron: "15 * * * *"
+  notification: true
+```
+
+You can get notification from sidekiq to slack channnel.
 
 ## Development
 
@@ -32,10 +44,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sidekiq-scheduler-notification.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/hsbt/sidekiq-scheduler-notification.
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
