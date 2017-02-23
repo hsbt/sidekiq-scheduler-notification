@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'sidekiq-scheduler'
-  spec.add_dependency 'slack-notifier'
+  spec.add_dependency 'slack-notifier', '>= 2'
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
