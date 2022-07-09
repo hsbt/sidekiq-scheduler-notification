@@ -6,10 +6,10 @@ class Sidekiq::Scheduler::NotificationTest < Minitest::Test
   end
 
   def test_notify_classes
-    Sidekiq.schedule = YAML.load_file(File.expand_path('../fixtures.yml', __FILE__))
+    Sidekiq.schedule = ::YAML.load_file(File.expand_path('../fixtures.yml', __FILE__))
 
-    Sidekiq::Scheduler.load_schedule!
+    SidekiqScheduler::Scheduler.load_schedule!
 
-    assert_equal ["NotificationJob"], Sidekiq::Scheduler.notify_classes
+    assert_equal ["NotificationJob"], SidekiqScheduler::Scheduler.notify_classes
   end
 end

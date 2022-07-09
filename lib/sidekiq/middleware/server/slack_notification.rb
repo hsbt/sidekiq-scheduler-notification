@@ -5,8 +5,8 @@ module Sidekiq
     module Server
       class SlackNotification
         def call(_worker, job, _queue)
-          if Sidekiq::Scheduler.notify_classes.include? job['wrapped']
-            notifier ||= Slack::Notifier.new(Sidekiq::Scheduler.notify_webhook) do
+          if SidekiqScheduler::Scheduler.notify_classes.include? job['wrapped']
+            notifier ||= Slack::Notifier.new(SidekiqScheduler::Scheduler.notify_webhook) do
               defaults username: 'Sidekiq Notification'
             end
             begin
