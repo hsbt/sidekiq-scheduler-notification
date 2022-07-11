@@ -23,7 +23,7 @@ Or install it yourself as:
 Added following configuration to initializer like `config/initializer/sidekiq.rb`
 
 ```rb
-Sidekiq::Scheduler.notify_webhook = "https://hooks.slack.com/services/xxx/yyyzzz"
+SidekiqScheduler::Scheduler.notify_webhook = "https://hooks.slack.com/services/xxx/yyyzzz"
 ```
 
 and append `notification` variable into `schedule.yml` used by sidekiq-scheduler. like this
