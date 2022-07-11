@@ -21,8 +21,4 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'sidekiq-scheduler', '>= 3'
   spec.add_dependency 'slack-notifier', '>= 2'
-
-  spec.add_development_dependency "bundler"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "minitest"
 end
