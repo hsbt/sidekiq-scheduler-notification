@@ -5,7 +5,7 @@ require 'sidekiq/scheduler/notification/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "sidekiq-scheduler-notification"
-  spec.version       = Sidekiq::Scheduler::Notification::VERSION
+  spec.version       = SidekiqScheduler::Scheduler::Notification::VERSION
   spec.authors       = ["SHIBATA Hiroshi"]
   spec.email         = ["hsbt@ruby-lang.org"]
 
